@@ -25,7 +25,7 @@ public class EmployeeProcessor
 
     public static void main(String[] args)
     {
-        final Map<Employee, Integer> duplicateCount = new HashMap<>();
+        final Map<Employee, Integer> duplicateCount = new HashMap<>();//If you wanted this to go alphabetically you could make the Employees comparable and use a Tree here.
 
         try (Stream<String> stream = Files.lines(getPathForResource("employees.csv")))
         {

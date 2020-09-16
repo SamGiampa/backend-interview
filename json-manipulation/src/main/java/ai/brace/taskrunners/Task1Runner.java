@@ -21,24 +21,12 @@ public class Task1Runner {
     }
 
     public void runTask1() throws IOException {
-        TextFile a1File = _textFileReader.readFile(getPathForResource("a1.json"));
+        TextFile a1File = _textFileReader.readFile(TaskRunnerUtil.getPathForResource("a1.json"));
         List<Text> textArray = a1File.getTextArray();
         Collections.sort(textArray);
         for (Text t : textArray) {
             System.out.println(t.getTextData());
         }
 
-    }
-
-    public static Path getPathForResource(final String path)
-    {
-        try
-        {
-            return Paths.get(ClassLoader.getSystemResource(path).toURI());
-        }
-        catch (URISyntaxException e)
-        {
-            throw new RuntimeException(e);
-        }
     }
 }
