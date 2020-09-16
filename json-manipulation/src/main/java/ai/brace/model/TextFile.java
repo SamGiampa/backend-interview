@@ -6,7 +6,7 @@ import java.util.List;
 public class TextFile {
     private String version;
     private String uuid;
-    private Date datetime;
+    private Long lastModified; //This is ugly as a long - we should use custom parser with GSON To make it a Date right away
     private String title;
     private String author;
     private String translator;
@@ -30,12 +30,12 @@ public class TextFile {
         this.uuid = uuid;
     }
 
-    public Date getDatetime() {
-        return datetime;
+    public Long getLastModified() {
+        return lastModified;
     }
 
-    public void setDatetime(Date datetime) {
-        this.datetime = datetime;
+    public void setLastModified(Long datetime) {
+        this.lastModified = datetime;
     }
 
     public String getTitle() {
