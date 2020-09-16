@@ -32,7 +32,7 @@ public class Task4Runner {
     private TextFile mergeTwoTextFiles(TextFile textFile1, TextFile textFile2){
         TextFile newestFile = textFile1;
         TextFile olderFile = textFile2;
-        if(textFile1.getLastModified() < textFile2.getLastModified()){
+        if(textFile1.getLastModified().before(textFile2.getLastModified())){
             newestFile = textFile2;
             olderFile = textFile1;
         }
