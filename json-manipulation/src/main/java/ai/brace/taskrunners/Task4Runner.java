@@ -22,8 +22,8 @@ public class Task4Runner {
     }
 
     public void runTask4() throws IOException {
-        TextFile a1File = _textFileReader.readFile(getPathForResource("a1.json"));
-        TextFile a2File = _textFileReader.readFile(getPathForResource("a2.json"));
+        TextFile a1File = _textFileReader.readFile(TaskRunnerUtil.getPathForResource("a1.json"));
+        TextFile a2File = _textFileReader.readFile(TaskRunnerUtil.getPathForResource("a2.json"));
         TextFile mergedFile = mergeTwoTextFiles(a1File,a2File);
         _textFileWriter.createFile(mergedFile,"output.json");
     }
@@ -49,17 +49,5 @@ public class Task4Runner {
         mergedFile.getTextArray().addAll(newestFile.getTextArray());
         mergedFile.setUuid(java.util.UUID.randomUUID().toString()); //Maybe TextData class should handle uuid field as UUID class - will take a look after tests working like this
         return mergedFile;
-    }
-
-    public static Path getPathForResource(final String path)
-    {
-        try
-        {
-            return Paths.get(ClassLoader.getSystemResource(path).toURI());
-        }
-        catch (URISyntaxException e)
-        {
-            throw new RuntimeException(e);
-        }
     }
 }

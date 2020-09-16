@@ -20,8 +20,8 @@ public class Task2Runner {
     }
 
     public void runTask2() throws IOException {
-        TextFile a1File = _textFileReader.readFile(getPathForResource("a1.json"));
-        TextFile a2File = _textFileReader.readFile(getPathForResource("a2.json"));
+        TextFile a1File = _textFileReader.readFile(TaskRunnerUtil.getPathForResource("a1.json"));
+        TextFile a2File = _textFileReader.readFile(TaskRunnerUtil.getPathForResource("a2.json"));
         List<Text> textArray = a1File.getTextArray();
         textArray.addAll(a2File.getTextArray());
         Collections.sort(textArray);
@@ -29,17 +29,5 @@ public class Task2Runner {
             System.out.println(t.getTextData());
         }
 
-    }
-
-    public static Path getPathForResource(final String path)
-    {
-        try
-        {
-            return Paths.get(ClassLoader.getSystemResource(path).toURI());
-        }
-        catch (URISyntaxException e)
-        {
-            throw new RuntimeException(e);
-        }
     }
 }

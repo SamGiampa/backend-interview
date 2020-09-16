@@ -19,32 +19,21 @@ public class Task3Runner {
     }
 
     public void runTask3() throws IOException {
-        TextFile a1File = _textFileReader.readFile(getPathForResource("a1.json"));
-        TextFile a2File = _textFileReader.readFile(getPathForResource("a2.json"));
+        TextFile a1File = _textFileReader.readFile(TaskRunnerUtil.getPathForResource("a1.json"));
+        TextFile a2File = _textFileReader.readFile(TaskRunnerUtil.getPathForResource("a2.json"));
         List<Text> textArray = a1File.getTextArray();
         textArray.addAll(a2File.getTextArray());
         TreeMap<String,Integer> wordMap = new TreeMap<>();
         for (Text t : textArray) {
             String[] wordsInTextData = t.getTextData().split(" ");
             for( String s : wordsInTextData){
-                wordMap.put(s, wordMap.getOrDefault(s, 0) + 1);
+                String cleanedWord = s.toLowerCase().replaceAll("[^\\p{IsAlphabetic}]","");
+                wordMap.put(cleanedWord, wordMap.getOrDefault(cleanedWord, 0) + 1);
             }
         }
         for(Map.Entry<String,Integer> wordCount : wordMap.entrySet()){
             System.out.println("(" + wordCount.getKey() + ") : " + wordCount.getValue());
         }
 
-    }
-
-    public static Path getPathForResource(final String path)
-    {
-        try
-        {
-            return Paths.get(ClassLoader.getSystemResource(path).toURI());
-        }
-        catch (URISyntaxException e)
-        {
-            throw new RuntimeException(e);
-        }
     }
 }
