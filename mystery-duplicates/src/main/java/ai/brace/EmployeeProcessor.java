@@ -32,6 +32,9 @@ public class EmployeeProcessor
             stream.forEach(line -> {
                 final String[] elements = line.split(",");
                 final Employee emp = new Employee(elements[0], elements[1], elements[2], elements[3]);
+                /*The error is here - just looking at this code it should work but upon closer inspection
+                of the class Employee.java we see that it has no Hash or Equals implementation
+                 and can't be used in a hash map this way*/
                 duplicateCount.put(emp, duplicateCount.getOrDefault(emp, 0) + 1);
             });
         }
